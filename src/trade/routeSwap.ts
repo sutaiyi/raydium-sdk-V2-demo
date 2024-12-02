@@ -61,6 +61,8 @@ async function routeSwap() {
     ...poolData,
   })
 
+  console.log('routes', routes)
+
   // data here also can try to cache if you wants e.g. mintInfos
   // but rpc related info doesn't suggest to cache it for a long time, because base/quote reserve and pool price change by time
   const {
@@ -147,6 +149,7 @@ async function routeSwap() {
       microLamports: 465915,
     },
   })
+  console.log('transactions', transactions)
 
   // printSimulate(transactions)
 
@@ -160,4 +163,4 @@ async function routeSwap() {
   process.exit() // if you don't want to end up node execution, comment this line
 }
 /** uncomment code below to execute */
-// routeSwap()
+routeSwap()

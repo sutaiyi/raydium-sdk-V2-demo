@@ -2,10 +2,18 @@ import { Raydium, TxVersion, parseTokenAccountResp } from '@raydium-io/raydium-s
 import { Connection, Keypair, clusterApiUrl } from '@solana/web3.js'
 import { TOKEN_PROGRAM_ID, TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import bs58 from 'bs58'
+import { getSolanaRpcHeard } from './api/utils'
 
-export const owner: Keypair = Keypair.fromSecretKey(bs58.decode('<YOUR_WALLET_SECRET_KEY>'))
-export const connection = new Connection('<YOUR_RPC_URL>') //<YOUR_RPC_URL>
-// export const connection = new Connection(clusterApiUrl('devnet')) //<YOUR_RPC_URL>
+export const owner: Keypair = Keypair.fromSecretKey(bs58.decode('M4hxrjhcJHXKEk7Ner5HJShcGALX1cxevjik5TtykF7xEowo9go3qr9vGYgSXVyFv6rybatWwX2naQK9BXbKe6W'))
+// const rpc = `https://app.cool.page/solana_new`
+// export const connection = new Connection(rpc, {
+//   commitment: 'confirmed',
+//   httpHeaders: {
+//     'Content-Type': 'application/json',
+//     ...getSolanaRpcHeard(),
+//   },
+// }) //<YOUR_RPC_URL>
+export const connection = new Connection('https://sleek-thrilling-owl.solana-mainnet.quiknode.pro/ad3162ba7f548c9dfc2215e4614036e6e2787ecb') //<YOUR_RPC_URL>
 export const txVersion = TxVersion.V0 // or TxVersion.LEGACY
 const cluster = 'mainnet' // 'mainnet' | 'devnet'
 
@@ -58,3 +66,5 @@ export const fetchTokenAccountData = async () => {
   })
   return tokenAccountData
 }
+
+// yarn dev src/cpmm/deposit.ts

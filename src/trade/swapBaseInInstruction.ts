@@ -18,7 +18,7 @@ import BN from 'bn.js'
 export const apiSwap = async () => {
   //   const inputMint = NATIVE_MINT.toBase58()
   //   const outputMint = USDCMint.toBase58()
-
+  console.time('swap')
   const inputMint = USDCMint.toBase58()
   const outputMint = NATIVE_MINT.toBase58()
   const amount = 1000000
@@ -26,10 +26,8 @@ export const apiSwap = async () => {
   const txVersion: 'LEGACY' | 'VO' = 'LEGACY'
 
   const { data: swapResponse } = await axios.get<ApiSwapV1Out>(
-    `${
-      API_URLS.SWAP_HOST
-    }/compute/swap-base-out?inputMint=${inputMint}&outputMint=${outputMint}&amount=${amount}&slippageBps=${
-      slippage * 100
+    `${API_URLS.SWAP_HOST
+    }/compute/swap-base-out?inputMint=${inputMint}&outputMint=${outputMint}&amount=${amount}&slippageBps=${slippage * 100
     }&txVersion=${txVersion}`
   )
 
@@ -77,6 +75,9 @@ export const apiSwap = async () => {
   tx.recentBlockhash = recentBlockhash
   tx.sign(owner)
 
-  printSimulate([tx])
+  console.log('tx', tx)
+  console.timeEnd('swap')
+
+  // printSimulate([tx])
 }
 apiSwap()

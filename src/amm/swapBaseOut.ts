@@ -64,13 +64,12 @@ export const swapBaseOut = async () => {
   })
 
   console.log(
-    `computed swap for ${new Decimal(amountOut).div(10 ** mintOut.decimals).toFixed(mintOut.decimals)} ${
-      mintOut.symbol || mintOut.address
+    `computed swap for ${new Decimal(amountOut).div(10 ** mintOut.decimals).toFixed(mintOut.decimals)} ${mintOut.symbol || mintOut.address
     } expected input amount ${new Decimal(out.amountIn.toString())
       .div(10 ** mintIn.decimals)
       .toFixed(mintIn.decimals)} ${mintIn.symbol || mintIn.address}, maximum ${new Decimal(out.maxAmountIn.toString())
-      .div(10 ** mintIn.decimals)
-      .toFixed(mintIn.decimals)} ${mintIn.symbol || mintIn.address} needed`
+        .div(10 ** mintIn.decimals)
+        .toFixed(mintIn.decimals)} ${mintIn.symbol || mintIn.address} needed`
   )
 
   const { execute } = await raydium.liquidity.swap({

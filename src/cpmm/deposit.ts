@@ -3,7 +3,6 @@ import BN from 'bn.js'
 import { initSdk, txVersion } from '../config'
 import Decimal from 'decimal.js'
 import { isValidCpmm } from './utils'
-
 export const deposit = async () => {
   const raydium = await initSdk()
 
@@ -48,7 +47,7 @@ export const deposit = async () => {
   computeRes.anotherAmount.amount -> pair amount needed to add liquidity
   computeRes.anotherAmount.fee -> token2022 transfer fee, might be undefined if isn't token2022 program
   */
-
+  console.log(inputAmount)
   const { execute } = await raydium.cpmm.addLiquidity({
     poolInfo,
     poolKeys,
@@ -69,4 +68,4 @@ export const deposit = async () => {
 }
 
 /** uncomment code below to execute */
-// deposit()
+deposit()
