@@ -76,6 +76,8 @@ export const apiSwap = async () => {
   tx.sign(owner)
 
   console.log('tx', tx)
+  console.log('tx', tx.signature)
+  console.log('tx', tx.serialize().toString('base64'))
   console.timeEnd('swap')
 
   // printSimulate([tx])
