@@ -77,7 +77,7 @@ export const apiSwap = async () => {
 
   console.log('tx', tx)
   console.log('tx', tx.signature)
-  console.log('tx', tx.serialize().toString('base64'))
+  console.log('tx', tx.serialize().length)
   console.log('tx', tx.serialize().toString('base64').length)
   console.timeEnd('swap')
 
